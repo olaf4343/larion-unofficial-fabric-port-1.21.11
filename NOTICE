@@ -1,0 +1,26 @@
+Larion World Generation — Unofficial Fabric Port (Minecraft 1.21.11)
+
+Upstream work: Larion World Generation, Copyright 2024 Badgerson
+https://github.com/ViciousBadger/larion-world-generation
+
+This repository is an unofficial, unaffiliated port. It is not endorsed by the
+original author. The upstream work is licensed under the Apache License, Version
+2.0; a copy of that license is in the LICENSE file.
+
+Significant changes from the upstream release (mod version 4.3.1, Minecraft 1.21.1):
+
+- Ported the build to Minecraft 1.21.11 with Fabric Loader 0.18.4 and
+  Fabric API 0.141.6+1.21.11.
+- Updated world generation data to the 1.21.11 schema:
+  - worldgen/noise_settings/overworld.json: replaced the removed
+    initial_density_without_jaggedness router entry with preliminary_surface_level
+    (find_top_surface wrapper with this mod's world bounds).
+  - dimension_type/overworld.json and overworld_caves.json: moved removed fields
+    (bed_works, effects, has_raids, natural, piglin_safe, respawn_anchor_works,
+    ultrawarm) into the new attributes map and added timelines.
+  - pack.mcmeta: pack_format replaced with min_format/max_format 94.
+- SteepSlopePredicateMixin: compute() is now public, to match the 1.21.11
+  SteepMaterialCondition visibility.
+- Fabric entrypoint uses net.minecraft.resources.Identifier instead of the
+  removed net.minecraft.resources.ResourceLocation.
+- Build tooling: Gradle 8.14.3, Fabric Loom 1.13, ModDevGradle 2.0.123.
